@@ -71,7 +71,7 @@ def sizeof_fmt(num, suffix='B'):
 
 
 if __name__ == '__main__':
-    log_file = open('access.log', 'r')
+    log_file = open('test-access.log', 'r')
 
     # process the log file and return a data dictionary
     print('## Loading File')
