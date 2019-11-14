@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='Nginx Log Bandwidth',
+    name='Nginx ScanLog',
     version='0.1',
     author='Clive Walkden',
     author_email='pypi.clive@mailsanitir.com',
