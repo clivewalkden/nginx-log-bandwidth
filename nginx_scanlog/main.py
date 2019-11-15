@@ -9,7 +9,18 @@ from tqdm import tqdm
 
 @click.command()
 @click.argument('filename')
-def init(filename):
+def init(filename: str):
+    """Script entrypoint
+
+    Parameters
+    ----------
+    filename: str
+        The file location to reference
+
+    Returns
+    -------
+    :return:
+    """
     if not filename:
         filename = 'access.log'
 
@@ -25,7 +36,18 @@ def init(filename):
     print('-----------------------------------')
 
 
-def process_log(log):
+def process_log(log: str) -> dict:
+    """Method to process the log and calculate the bandwidth used
+
+    Parameters
+    ----------
+    log: str
+
+    Returns
+    -------
+    dict
+         A dictionary containing the total_records, counted, skipped and total_bandwidth
+    """
     print('## Reading file')
     log_file = open(log, 'r')
 
@@ -54,7 +76,19 @@ def process_log(log):
     return result
 
 
-def get_num_lines(file_path):
+def get_num_lines(file_path: str) -> int:
+    """Count the number of lines in the log file
+
+    Parameters
+    ----------
+    file_path: str
+        The filepath to the file to be counted
+
+    Returns
+    -------
+    int
+        The number of lines in the file
+    """
     fp = open(file_path, "r+")
     buf = mmap.mmap(fp.fileno(), 0)
     lines = 0
@@ -64,7 +98,21 @@ def get_num_lines(file_path):
     return lines
 
 
-def find(text):
+def find(text: str) -> list:
+    """Find a pattern in the string provided
+
+    Parameters
+    ----------
+    text: str
+        The string to search
+
+    Returns
+    -------
+    list
+        The matched data
+    bool
+        False if it wasn't found
+    """
     pat = (r''
            '(.+)\s-\s-\s'  # IP Address
            '\[(.+)\]\s'  # Date Time
@@ -86,7 +134,21 @@ def find(text):
     return False
 
 
-def sizeof_fmt(num, suffix='B'):
+def sizeof_fmt(num: int, suffix: str = 'B') -> str:
+    """Helper to return a human readable filesize
+
+    Parameters
+    ----------
+    num: int
+        The number of bytes
+    suffix: str
+        The default SI unit
+
+    Returns
+    -------
+    str
+        The formatted human readable output
+    """
     for unit in ['', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi', 'Ei', 'Zi']:
         if abs(num) < 1024.0:
             return "%3.1f%s%s" % (num, unit, suffix)
