@@ -7,7 +7,7 @@ setup(
     name='Nginx ScanLog',
     version='0.1',
     author='Clive Walkden',
-    author_email='pypi.clive@mailsanitir.com',
+    author_email='pypi.clive@mailsanitizr.com',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/clivewalkden/nginx-log-bandwidth",
