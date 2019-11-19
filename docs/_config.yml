@@ -18,8 +18,8 @@ email: pypi.clive@mailsanitizr.com
 description: >- # this means to ignore newlines until "baseurl:"
   A Python 3.5+ script to analyse a log file and return the bandwidth used
   for all the requests within it.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/nginx-log-bandwidth" # the subpath of your site, e.g. /blog
+url: "https://clivewalkden.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: clivewalkden
 github_username:  clivewalkden
 
