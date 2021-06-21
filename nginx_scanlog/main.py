@@ -61,7 +61,7 @@ def process_log(log: str) -> dict:
         data = find(line)
         if data:
             counted += 1
-            total_bandwidth += int(data[0][5])
+            total_bandwidth += int(data[0][6])
         else:
             skipped += 1
 
@@ -114,7 +114,7 @@ def find(text: str) -> list:
         False if it wasn't found
     """
     pat = (r''
-           '(.+)\s-\s-\s'  # IP Address
+           '(.+)\s-\s(.+)\s'  # IP Address and - and -/auth details
            '\[(.+)\]\s'  # Date Time
            '"(DELETE|HEAD|GET|OPTIONS|POST|PUT)\s(.+)\s\w+/.+"\s'  # Requested File
            '(\d+)\s'  # Status
@@ -151,9 +151,9 @@ def sizeof_fmt(num: int, suffix: str = 'B') -> str:
     """
     for unit in ['', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi', 'Ei', 'Zi']:
         if abs(num) < 1024.0:
-            return "%3.1f%s%s" % (num, unit, suffix)
+            return "%3.2f%s%s" % (num, unit, suffix)
         num /= 1024.0
-    return "%.1f%s%s" % (num, 'Yi', suffix)
+    return "%.2f%s%s" % (num, 'Yi', suffix)
 
 
 if __name__ == '__main__':
